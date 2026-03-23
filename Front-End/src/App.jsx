@@ -6,6 +6,9 @@ import CompleteSignup  from './comps/CompleteSignup';
 import Continue        from './comps/Continue';
 import Login           from './comps/Login';
 import GoogleCallback  from './comps/GoogleCallback';
+import ForgotPassword from './comps/ForgotPassword';
+import ResetPassword from './comps/ResetPassword';
+import AvocatProfile from './comps/AvocatProfile';
 
 export default function App() {
   return (
@@ -17,6 +20,16 @@ export default function App() {
       <Route path="/cc"               element={<Continue />} />
       <Route path="/auth/callback"    element={<GoogleCallback />} />
       <Route path="/"                 element={<Login />} />
+        <Route
+          path="/ForgotPassword"
+          element={<ForgotPassword />}
+        
+        />
+                <Route path='/AvocatProfile' element={<AvocatProfile />} />
+
+        
+                <Route path='/ResetPassword' element={<ResetPassword/>} />
+
     </Routes>
   );
 }

@@ -8,6 +8,11 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::post('/register',     [RegisterController::class, 'register']);
 Route::post('/verify-email', [RegisterController::class, 'verifyEmail']);
 Route::post('/login',        [RegisterController::class, 'login']);
+  Route::post('/sendResetLink',    [RegisterController::class, 'sendResetLink']);
+                 Route::post('/resetPassword',    [RegisterController::class, 'resetPassword']);
+
+
+
 
 // ── Google OAuth ──────────────────────────────────────
 Route::get('/auth/google',          [RegisterController::class, 'googleRedirect']);
@@ -18,8 +23,11 @@ Route::get('/test', function () {
     return response()->json(['message' => 'API is working']);
 });
 
-// ── Routes protégées ─────────────────────────────────
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/profile/avocat', [RegisterController::class, 'completeAvocatProfile']);
-    Route::post('/profile/client', [RegisterController::class, 'completeClientProfile']);
+    Route::put('/avocat/profile',    [RegisterController::class, 'updateAvocatProfile']);
+        Route::post('/profile/avocat',    [RegisterController::class, 'completeAvocatProfile']);
+
+
+        Route::get('/avocat/profile',    [RegisterController::class, 'getAvocatProfile']);
+
 });
