@@ -18,7 +18,7 @@ export default function GoogleCallback() {
       if (userData.role === "avocat" && !userData.has_profile) {
         navigate("/complete-profile");
       } else if (userData.role === "avocat" && userData.has_profile) {
-        navigate("/avocat/dashboard");
+        navigate("/AvocatProfile");
       } else if (userData.role === "client") {
         navigate("/client/dashboard");
       } else {

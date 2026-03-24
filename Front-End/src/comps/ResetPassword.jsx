@@ -20,7 +20,7 @@ export default function ResetPassword() {
     const emailParam = searchParams.get("email");
 
     if (!tokenParam || !emailParam) {
-      setError("Invalid reset link.");
+      setError("Lien de reinitialisation invalide.");
     } else {
       setToken(tokenParam);
       setEmail(emailParam);
@@ -34,13 +34,13 @@ export default function ResetPassword() {
     setLoading(true);
 
     if (password !== passwordConfirmation) {
-      setError("Passwords do not match.");
+      setError("Les mots de passe ne correspondent pas.");
       setLoading(false);
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/resetPassword", {
+      const response = await axios.post("http://127.0.0.1:8000/api/resetPassword", {
         email,
         token,
         password,
@@ -55,7 +55,7 @@ export default function ResetPassword() {
     } catch (err) {
       setError(
         err.response?.data?.message ||
-        "Something went wrong. Please try again."
+        "Une erreur s'est produite. Veuillez reessayer."
       );
     } finally {
       setLoading(false);
@@ -65,33 +65,33 @@ export default function ResetPassword() {
   return (
     <div className="reset-bg">
       <div className="reset-card">
-        <h2 className="reset-title">Reset Password</h2>
+        <h2 className="reset-title">Reinitialiser le mot de passe</h2>
 
         <form onSubmit={handleSubmit} className="reset-form">
           <label>
-            New Password
+            Nouveau mot de passe
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter new password"
+              placeholder="Entrez votre nouveau mot de passe"
               required
             />
           </label>
 
           <label>
-            Confirm Password
+            Confirmer le mot de passe
             <input
               type="password"
               value={passwordConfirmation}
               onChange={(e) => setPasswordConfirmation(e.target.value)}
-              placeholder="Confirm password"
+              placeholder="Confirmez votre mot de passe"
               required
             />
           </label>
 
           <button type="submit" disabled={loading}>
-            {loading ? "Resetting..." : "Reset Password"}
+            {loading ? "Reinitialisation..." : "Reinitialiser le mot de passe"}
           </button>
         </form>
 
