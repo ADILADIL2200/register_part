@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('useer_id')->nullable()->constrained('useers')->nullOnDelete();
             $table->string('nom', 100);
             $table->string('prenom', 100);
-            $table->string('cin', 10)->nullable();                // CIN marocaine : AB123456
-            $table->string('passeport', 20)->nullable();          // Pour clients étrangers
+            $table->string('cin', 10)->nullable();                
+            $table->string('passeport', 20)->nullable();          
             $table->date('date_naissance')->nullable();
             $table->string('nationalite', 50)->default('Marocaine');
             $table->string('telephone', 20)->nullable();

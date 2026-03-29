@@ -15,9 +15,20 @@ class Avocat extends Model
         'grade', 'specialite', 'nom_cabinet',
         'adresse_cabinet', 'ville', 'photo',
     ];
+    protected $casts = [
+        'date_inscription_barreau' => 'date',
+    ];
 
+    // Un avocat appartient à un useer
     public function useer()
     {
         return $this->belongsTo(Useer::class, 'useer_id');
     }
+
+    // Un avocat a plusieurs clients
+    public function clients()
+    {
+        return $this->hasMany(Client::class, 'avocat_id');
+    }
+    
 }
