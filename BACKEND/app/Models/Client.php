@@ -42,4 +42,17 @@ class Client extends Model
     {
         return $this->belongsTo(Useer::class, 'useer_id');
     }
+    public function scopePourAvocat($query, $avocatId)
+    {
+        return $query->where('avocat_id', $avocatId);
+    }
+
+    public function scopeRecherche($query, $search)
+    {
+        return $query->where(function ($q) use ($search) {
+            $q->where('nom',    'LIKE', "%{$search}%")
+              ->orWhere('prenom', 'LIKE', "%{$search}%")
+              ->orWhere('cin',    'LIKE', "%{$search}%");
+        });
+    }
 }

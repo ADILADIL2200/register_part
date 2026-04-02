@@ -11,7 +11,7 @@ import ResetPassword from "./components/ResetPassword";
 import AvocatProfile from "./components/AvocatProfile";
 import { Toaster } from "react-hot-toast";
 import AddClient from "./pages/clients/AddClient";
-
+import ClientsList from "./pages/clients/ClientsList";
 export default function App() {
   return (
     <>
@@ -70,6 +70,7 @@ export default function App() {
         <Route path="/AvocatProfile" element={<AvocatProfile />} />
         {/* */}
         <Route path="/clients/add" element={<AddClient />} />
+        <Route path="/clients" element={<ClientsList />} />
       </Routes>
     </>
   );
