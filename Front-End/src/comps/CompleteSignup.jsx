@@ -71,7 +71,7 @@ export default function CompleteSignup() {
  
       if (response.ok) {
         setSuccess("Profil complété avec succès ! Redirection...");
-        setTimeout(() => navigate("/avocat/dashboard"), 1800);
+        setTimeout(() => navigate("/login"), 1800);
       } else {
         setMessage(data.message || "Une erreur s'est produite.");
         setErrors(data.errors || {});

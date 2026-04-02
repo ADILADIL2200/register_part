@@ -9,7 +9,7 @@ export default function ForgotPassword() {
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
-    e.prezventDefault();
+    e.preventDefault();
     setMessage("");
     setError("");
     setLoading(true);
