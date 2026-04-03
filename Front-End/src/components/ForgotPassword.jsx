@@ -17,12 +17,13 @@ export default function ForgotPassword() {
     try {
       const response = await axios.post(
         "http://localhost:8000/api/sendResetLink",
-        { email }
+        { email },
       );
       setMessage(response.data.message);
     } catch (err) {
       setError(
-        err.response?.data?.message || "Something went wrong. Please try again."
+        err.response?.data?.message ||
+          "Something went wrong. Please try again.",
       );
     } finally {
       setLoading(false);

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ClientController;
 
 // ── Routes publiques ─────────────────────────────────
 Route::post('/register',     [RegisterController::class, 'register']);
@@ -30,4 +31,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::get('/avocat/profile',    [RegisterController::class, 'getAvocatProfile']);
 
+});
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/clients', [ClientController::class, 'store']);
+    Route::get('/clients/filtres', [ClientController::class, 'filtres']);
+    Route::get('/clients',[ClientController::class, 'index']);
 });
